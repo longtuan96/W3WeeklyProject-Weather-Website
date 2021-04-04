@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="header" class="" style="padding-left: 2%">
+      <div class="row d-flex justify-content-around">
+        <div class="col-4 d-flex align-items-center">
+          <i class="fas fa-umbrella" style="font-size: 300%"></i>
+        </div>
+
+        <div class="col-4 d-flex align-items-center justify-content-center">
+          <div
+            class="text-center form-floating mt-3 mb-3"
+            style="width: 80%; height: auto"
+          >
+            <form onsubmit="updateCountry()">
+              <input
+                type="text"
+                class="form-control"
+                id="searchForCountry"
+                placeholder="Search for country"
+              />
+              <input type="submit" value="Search" />
+            </form>
+            <button type="button" class="" onclick="getCurrentLocation()">
+              My location
+            </button>
+          </div>
+        </div>
+
+        <div class="col-4 d-flex justify-content-end">
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-danger dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fas fa-globe"></i>
+            </button>
+            <ul id="select-language" class="dropdown-menu scrollable-menu"></ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section
+      id="content"
+      class="container d-flex flex-column align-items-center"
+    >
+      <!-- <div
+        class="media d-flex justify-content-around dash-board"
+        id="mainDashBoard"
+      >
+        <div class="media-body">
+          <h3 id="mainDB-Location" style="font-size: 225%">
+            Location blabh blbahba
+          </h3>
+          <p id="mainDB-Time" style="font-size: 100%">TIme dasdasdasd</p>
+          <h1 id="mainDB-CurrentFTemp" style="font-size: 415%">TEMP asdasd</h1>
+          <h2 id="mainDB-Cloudiness" style="font-size: 145%">
+            Cloud dasdasdasdas
+          </h2>
+          <h4 id="mainDB-Visibility" style="font-size: 100%">visibility</h4>
+        </div>
+        
+      </div> -->
+
+      <!-- <div id="mainDashBoard" class="red-border">
+
+
+        <div class="row d-flex justify-content-between">
+          <div class="col-8">
+            <h3 id="mainDB-Location">Location blabh blbahba</h3>
+
+            <p id="mainDB-Time">TIme dasdasdasd</p>
+            <h1 id="mainDB-CurrentFTemp">TEMP asdasd</h1>
+            <h2 id="mainDB-Cloudiness">Cloud dasdasdasdas</h2>
+            <h4 id="mainDB-Visibility">visibility</h4>
+          </div>
+          <div class="col-4 d-flex justify-content-center align-items-center">
+            <div id="mainDB-icon" ">icon</div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div id="additional-info" class="red-border text-center dash-board">
+        <div id="ai-Location">location blah blah blah</div>
+        <div id="ai-FTemp">aa °C</div>
+        <div class="row justify-content-between">
+          <div class="col">
+            <div id="ai-Humidity" class="additional-info">
+              <i class="fas fa-tint"> Humidity</i>
+              <div id="currentHumidity">78%</div>
+            </div>
+            <hr />
+            <div id="ai-Pressure" class="additional-info">
+              <i class="fas fa-weight"> Pressure</i>
+              <div id="currentPressure">1100</div>
+            </div>
+            <hr />
+            <div id="ai-Visibility" class="additional-info">
+              <i class="fas fa-eye"> Visibility</i>
+              <div id="currentVisibility">10000</div>
+            </div>
+            <hr />
+          </div>
+          <div class="col">
+            <div id="ai-Wind" class="additional-info">
+              <i class="fas fa-wind"> Wind</i>
+              <div id="currentWind">88323</div>
+            </div>
+            <hr />
+            <div id="ai-DewPoint" class="additional-info">
+              <i class="fas fa-tint"> Dew Point</i>
+              <div id="currentDewPoint">21°C</div>
+            </div>
+            <hr />
+            <div id="ai-UVIndex" class="additional-info">
+              <i class="fas fa-sun"> UV Index</i>
+              <div id="currentUVIndex"></div>
+            </div>
+            <hr />
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div id="hourly-forecast" class="red-border dash-board">
+        <h5>Hourly Forecast</h5>
+        <div id="hourly-content" class="d-flex justify-content-around"></div>
+      </div> -->
+
+      <!-- <div id="daily-forecast" class="red-border dash-board">
+        <h5>Daily Forecast</h5>
+        <div id="daily-content" class="d-flex justify-content-around"></div>
+      </div>-->
+    </section>
+
+    <footer id="footer" class="d-flex justify-content-center">
+      <h2>Connect with us</h2>
+      <a href="https://www.facebook.com/longtuan.tran.5"
+        ><i class="fab fa-facebook"></i
+      ></a>
+      <a href="mailto:longtuan03@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/longtuan96"><i class="fab fa-github"></i></a>
+    </footer>
+
+    <script type="text/javascript" src="countries.json"></script>
+    <script
+      src="https://kit.fontawesome.com/8b6b3f8bb3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
