@@ -41,7 +41,7 @@ async function getCurrentWeather() {
 }
 
 async function getWeather() {
-  console.log(document.getElementById("abc"));
+  document.getElementById("content").innerHTML = "";
 
   let locationLat = currentLat;
   let locationLon = currentLon;
