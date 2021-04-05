@@ -283,7 +283,7 @@ function renderDailyForecast() {
 </div>`);
 }
 
-function updateCountry() {
+function updateCountry(e) {
   document.getElementById("content").innerHTML = "";
   let inputValue = document.getElementById("searchForCountry").value;
   // console.log(inputValue);
@@ -296,6 +296,8 @@ function updateCountry() {
   }
   getWeather();
 }
-
+document
+  .getElementById("searchForCountry")
+  .addEventListener("keydown", updateCountry(Event));
 getCountries();
 getWeather();
